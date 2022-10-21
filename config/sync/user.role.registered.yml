@@ -1,0 +1,22 @@
+uuid: 9f9effc1-9478-40f6-a299-51752b843909
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.check
+  module:
+    - node
+    - simple_oauth
+    - system
+id: registered
+label: Registered
+weight: 2
+is_admin: null
+permissions:
+  - 'access content'
+  - 'change own username'
+  - 'create check content'
+  - 'debug simple_oauth tokens'
+  - 'delete own check content'
+  - 'edit own check content'
+  - 'view own unpublished content'

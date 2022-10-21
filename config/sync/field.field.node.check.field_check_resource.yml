@@ -1,0 +1,21 @@
+uuid: 0f1c8d94-ce9b-4435-ba90-727b46d102f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_check_resource
+    - node.type.check
+  module:
+    - text
+id: node.check.field_check_resource
+field_name: field_check_resource
+entity_type: node
+bundle: check
+label: Resource
+description: 'URL/IP to check'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

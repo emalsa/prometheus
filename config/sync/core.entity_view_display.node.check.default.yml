@@ -1,0 +1,28 @@
+uuid: 8296f230-75be-4c58-8614-627c416b0165
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.check.field_check_resource
+    - node.type.check
+  module:
+    - text
+    - user
+id: node.check.default
+targetEntityType: node
+bundle: check
+mode: default
+content:
+  field_check_resource:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

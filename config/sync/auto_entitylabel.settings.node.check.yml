@@ -1,0 +1,9 @@
+status: 2
+pattern: '[node:field_check_resource]'
+escape: false
+preserve_titles: false
+dependencies:
+  config:
+    - node.type.check
+save: 0
+chunk: '50'

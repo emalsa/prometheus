@@ -1,0 +1,19 @@
+uuid: e1ed3d11-35cf-433a-82e8-cee35bf0311b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_check_resource
+field_name: field_check_resource
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

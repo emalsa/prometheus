@@ -1,0 +1,22 @@
+uuid: 0fe39285-3a5f-401f-abc7-bd0e90c6e004
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.check.field_check_resource
+    - node.type.check
+  module:
+    - user
+id: node.check.teaser
+targetEntityType: node
+bundle: check
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_check_resource: true
