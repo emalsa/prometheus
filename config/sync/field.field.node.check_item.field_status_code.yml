@@ -1,0 +1,23 @@
+uuid: 06c0ab94-2a67-4948-80ee-9a32aa442fc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_status_code
+    - node.type.check_item
+id: node.check_item.field_status_code
+field_name: field_status_code
+entity_type: node
+bundle: check_item
+label: 'Status code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

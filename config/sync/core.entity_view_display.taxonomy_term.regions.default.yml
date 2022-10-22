@@ -1,0 +1,39 @@
+uuid: 4a407727-bef0-4649-9906-84766b64edef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.regions.field_cloud_url
+    - field.field.taxonomy_term.regions.field_machine_name
+    - taxonomy.vocabulary.regions
+  module:
+    - text
+id: taxonomy_term.regions.default
+targetEntityType: taxonomy_term
+bundle: regions
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_cloud_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_machine_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

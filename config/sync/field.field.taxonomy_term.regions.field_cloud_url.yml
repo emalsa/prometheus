@@ -1,0 +1,19 @@
+uuid: 358c2da8-b472-4032-b642-ff8f299bbef9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_cloud_url
+    - taxonomy.vocabulary.regions
+id: taxonomy_term.regions.field_cloud_url
+field_name: field_cloud_url
+entity_type: taxonomy_term
+bundle: regions
+label: 'Cloud URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,23 @@
+uuid: 74d0ad63-b88d-42e3-9c42-be34029c5fb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_interval
+    - node.type.check
+id: node.check.field_interval
+field_name: field_interval
+entity_type: node
+bundle: check
+label: Interval
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,19 @@
+uuid: 127eaa61-a474-4cb0-a788-e9350f38128b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_machine_name
+    - taxonomy.vocabulary.regions
+id: taxonomy_term.regions.field_machine_name
+field_name: field_machine_name
+entity_type: taxonomy_term
+bundle: regions
+label: 'Machine name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

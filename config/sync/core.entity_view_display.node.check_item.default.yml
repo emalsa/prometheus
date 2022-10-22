@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.check_item.field_check_ref
     - field.field.node.check_item.field_dom_content_loaded
     - field.field.node.check_item.field_page_load
+    - field.field.node.check_item.field_status_code
     - node.type.check_item
   module:
     - user
@@ -20,7 +21,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 104
+    weight: 4
     region: content
   field_dom_content_loaded:
     type: string
@@ -28,7 +29,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 103
+    weight: 2
     region: content
   field_page_load:
     type: string
@@ -36,11 +37,20 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 102
+    weight: 1
+    region: content
+  field_status_code:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden: {  }

@@ -1,0 +1,23 @@
+uuid: 948c9883-623f-403a-af1f-aacf98e2ed7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_attempts_before_trigger
+    - node.type.check
+id: node.check.field_attempts_before_trigger
+field_name: field_attempts_before_trigger
+entity_type: node
+bundle: check
+label: 'Attempts before trigger'
+description: 'How many attempts should we try before you''ll get notified about a problem. We will then check every 2 minutes as soon as a problem with your resource has appeared. As soon as the number of attempts is reached, we will notify you.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
