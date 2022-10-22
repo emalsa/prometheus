@@ -1,0 +1,46 @@
+uuid: 28e7da44-a308-4782-b27d-93ade26191e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.check_item.field_check_ref
+    - field.field.node.check_item.field_dom_content_loaded
+    - field.field.node.check_item.field_page_load
+    - node.type.check_item
+  module:
+    - user
+id: node.check_item.default
+targetEntityType: node
+bundle: check_item
+mode: default
+content:
+  field_check_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_dom_content_loaded:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_page_load:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

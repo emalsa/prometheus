@@ -1,0 +1,9 @@
+status: 1
+pattern: '[node:field_check_ref:entity:title]'
+escape: false
+preserve_titles: false
+dependencies:
+  config:
+    - node.type.check_item
+save: 0
+chunk: '50'

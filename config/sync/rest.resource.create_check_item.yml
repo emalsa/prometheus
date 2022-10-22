@@ -1,0 +1,19 @@
+uuid: 5dd10132-a8bd-4471-8372-663e8ca87c36
+langcode: en
+status: true
+dependencies:
+  module:
+    - prometheus_check_item
+    - serialization
+    - user
+id: create_check_item
+plugin_id: create_check_item
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+  formats:
+    - json
+  authentication:
+    - cookie

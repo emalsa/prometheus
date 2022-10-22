@@ -6,3 +6,4 @@ content_access_roles_gids:
   registered: 3
 content_access_node_type:
   check: 'a:2:{s:8:"view_own";a:1:{i:0;s:10:"registered";}s:4:"view";a:0:{}}'
+  check_item: 'a:2:{s:8:"view_own";a:1:{i:0;s:13:"authenticated";}s:4:"view";a:0:{}}'

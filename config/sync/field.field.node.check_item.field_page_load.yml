@@ -1,0 +1,19 @@
+uuid: 41280205-6002-4c98-9981-80a40ac099d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_page_load
+    - node.type.check_item
+id: node.check_item.field_page_load
+field_name: field_page_load
+entity_type: node
+bundle: check_item
+label: 'Page Load'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: 12ee9dec-3d0e-4fa9-b8c2-dc8666eab578
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_dom_content_loaded
+field_name: field_dom_content_loaded
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

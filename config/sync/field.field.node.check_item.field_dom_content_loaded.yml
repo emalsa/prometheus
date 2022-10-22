@@ -1,0 +1,19 @@
+uuid: 047273e6-c2ee-4e0a-8e75-cc60c59864c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dom_content_loaded
+    - node.type.check_item
+id: node.check_item.field_dom_content_loaded
+field_name: field_dom_content_loaded
+entity_type: node
+bundle: check_item
+label: DomContentLoaded
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

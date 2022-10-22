@@ -1,0 +1,26 @@
+uuid: 70c2c758-9df7-49a9-bfd3-70e4180813e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.check_item.field_check_ref
+    - field.field.node.check_item.field_dom_content_loaded
+    - field.field.node.check_item.field_page_load
+    - node.type.check_item
+  module:
+    - user
+id: node.check_item.teaser
+targetEntityType: node
+bundle: check_item
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_check_ref: true
+  field_dom_content_loaded: true
+  field_page_load: true

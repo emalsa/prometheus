@@ -1,11 +1,17 @@
 uuid: cde5e486-9591-4319-ab51-4f6f40e97fe0
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - rest.resource.create_check_item
+  module:
+    - rest
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
 label: 'Anonymous user'
 weight: 0
 is_admin: false
-permissions: {  }
+permissions:
+  - 'restful get create_check_item'
+  - 'restful post create_check_item'

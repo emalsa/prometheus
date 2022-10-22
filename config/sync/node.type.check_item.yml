@@ -1,0 +1,11 @@
+uuid: 42e31888-6a7c-4b76-9614-fa8873efdd6c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Check Item'
+type: check_item
+description: ''
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

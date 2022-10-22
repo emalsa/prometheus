@@ -1,0 +1,7 @@
+#prometheus_check_item.create_check_item:
+#  path: '/api/check_item/create'
+#  defaults:
+#    _title: 'Check item create'
+#    _controller: '\Drupal\prometheus_check_item\Controller\CreateCheckItemController::build'
+#  requirements:
+#    _permission: 'access content'

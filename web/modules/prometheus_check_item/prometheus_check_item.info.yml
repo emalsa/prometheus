@@ -1,0 +1,5 @@
+name: prometheus_check_item
+type: module
+description: Create check item
+package: Custom
+core_version_requirement: ^9 || ^10
