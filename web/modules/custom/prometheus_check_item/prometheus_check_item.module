@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for prometheus_check_item module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function prometheus_check_item_cron() {
+
+}
+
+function _trigger_checks() {
+  Drupal::logger('test')->error('Message');
+
+
+  http://localhost:55892/user/1
+}

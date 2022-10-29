@@ -1,0 +1,17 @@
+uuid: 24e960c6-5d0e-4b59-b786-c6b1eec432ad
+langcode: en
+status: true
+dependencies:
+  module:
+    - prometheus_check_item
+title: 'Trigger Checks'
+id: trigger_checks
+weight: 0
+module: prometheus_check_item
+callback: _trigger_checks
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
