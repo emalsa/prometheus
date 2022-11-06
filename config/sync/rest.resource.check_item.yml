@@ -1,0 +1,21 @@
+uuid: 6f1fc072-7844-4d23-8055-f1b6f38645a9
+langcode: en
+status: true
+dependencies:
+  module:
+    - prometheus_check_item
+    - serialization
+    - simple_oauth
+    - user
+id: check_item
+plugin_id: check_item
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+  formats:
+    - json
+  authentication:
+    - oauth2
+    - cookie

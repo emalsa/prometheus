@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - node.type.check
+    - rest.resource.check_item
   module:
     - node
+    - rest
     - simple_oauth
     - system
 id: registered
@@ -19,4 +21,6 @@ permissions:
   - 'debug simple_oauth tokens'
   - 'delete own check content'
   - 'edit own check content'
+  - 'restful get check_item'
+  - 'restful post check_item'
   - 'view own unpublished content'

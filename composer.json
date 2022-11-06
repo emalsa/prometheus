@@ -52,6 +52,12 @@
         "sort-packages": true
     },
     "extra": {
+        "enable-patching": true,
+        "patches": {
+            "drupal/core": {
+                "Deprecated function: Implicit conversion from float-string": "https://www.drupal.org/files/issues/2022-02-18/3264979-3.patch"
+            }
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
