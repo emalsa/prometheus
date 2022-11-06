@@ -5,10 +5,13 @@ dependencies:
   config:
     - field.field.node.check_item.field_check_ref
     - field.field.node.check_item.field_dom_content_loaded
+    - field.field.node.check_item.field_full_response
     - field.field.node.check_item.field_page_load
+    - field.field.node.check_item.field_status
     - field.field.node.check_item.field_status_code
     - node.type.check_item
   module:
+    - options
     - user
 id: node.check_item.default
 targetEntityType: node
@@ -31,6 +34,13 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_full_response:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_page_load:
     type: string
     label: above
@@ -38,6 +48,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_status_code:
     type: number_integer

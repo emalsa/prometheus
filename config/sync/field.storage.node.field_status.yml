@@ -1,0 +1,30 @@
+uuid: 365e2b6b-37b8-45fc-abaa-218f0c1fea03
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_status
+field_name: field_status
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: checking
+      label: Checking
+    -
+      value: to_process
+      label: 'To Process'
+    -
+      value: final
+      label: Final
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

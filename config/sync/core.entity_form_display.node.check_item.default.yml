@@ -5,7 +5,9 @@ dependencies:
   config:
     - field.field.node.check_item.field_check_ref
     - field.field.node.check_item.field_dom_content_loaded
+    - field.field.node.check_item.field_full_response
     - field.field.node.check_item.field_page_load
+    - field.field.node.check_item.field_status
     - field.field.node.check_item.field_status_code
     - node.type.check_item
   module:
@@ -17,13 +19,13 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 6
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   field_check_ref:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -33,50 +35,64 @@ content:
     third_party_settings: {  }
   field_dom_content_loaded:
     type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_page_load:
-    type: string_textfield
     weight: 2
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_full_response:
+    type: string_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_page_load:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_status:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_status_code:
     type: number
-    weight: 3
+    weight: 4
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 7
+    weight: 9
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 10
+    weight: 12
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 8
+    weight: 10
     region: content
     settings:
       display_label: true
@@ -91,7 +107,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 7
     region: content
     settings:
       match_operator: CONTAINS

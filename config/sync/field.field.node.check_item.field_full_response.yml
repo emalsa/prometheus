@@ -1,0 +1,19 @@
+uuid: bc8300c5-d5ef-4199-a04e-0e495d3e2d33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_full_response
+    - node.type.check_item
+id: node.check_item.field_full_response
+field_name: field_full_response
+entity_type: node
+bundle: check_item
+label: 'Full response'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
