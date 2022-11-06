@@ -1,0 +1,23 @@
+uuid: 8536c404-4251-4a1e-b47b-e85ebfc4183c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_check_interval
+    - node.type.check
+  module:
+    - options
+id: node.check.field_check_interval
+field_name: field_check_interval
+entity_type: node
+bundle: check
+label: 'Check Interval'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

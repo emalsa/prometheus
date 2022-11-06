@@ -137,7 +137,7 @@ class CheckItemResource extends ResourceBase {
       return $response;
     }
     catch (\Exception $exception) {
-      $a = 1;
+      // Log!
     }
 
 
@@ -157,13 +157,13 @@ class CheckItemResource extends ResourceBase {
   }
 
   protected function getCheckItemNode(): EntityInterface|null {
-    $node = $this->entityTypeManager->getStorage('node')->load(4);
+    $node = $this->entityTypeManager->getStorage('node')->load($this->jsonData['check_item_id']);
     if (!$node instanceof NodeInterface || $node->bundle() !== 'check_item') {
       // Log!
       return NULL;
     }
 
-    if ($node->get('field_status')->getValue() !== self::CHECKING_STATUS) {
+    if ($node->get('field_status')->value !== self::CHECKING_STATUS) {
       // Log!
       return NULL;
     }

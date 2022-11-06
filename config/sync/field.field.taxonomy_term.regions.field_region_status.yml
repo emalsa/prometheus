@@ -1,0 +1,23 @@
+uuid: 443dd9ee-a404-4970-9eff-9498cd005979
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_region_status
+    - taxonomy.vocabulary.regions
+  module:
+    - options
+id: taxonomy_term.regions.field_region_status
+field_name: field_region_status
+entity_type: taxonomy_term
+bundle: regions
+label: 'Region Status'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: active
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,23 @@
+uuid: f27c01a2-f9f2-43cf-963a-851cfd254bb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type
+    - node.type.check
+  module:
+    - options
+id: node.check.field_type
+field_name: field_type
+entity_type: node
+bundle: check
+label: Type
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: url
+default_value_callback: ''
+settings: {  }
+field_type: list_string

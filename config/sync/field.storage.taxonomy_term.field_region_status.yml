@@ -1,0 +1,27 @@
+uuid: 24131209-d58e-4b82-8cec-6d9021662966
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_region_status
+field_name: field_region_status
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: active
+      label: Active
+    -
+      value: disabled
+      label: Disabled
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

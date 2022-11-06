@@ -1,15 +1,15 @@
-uuid: 358c2da8-b472-4032-b642-ff8f299bbef9
+uuid: 7303c4e4-16f1-4fc9-bf5b-57b41fef01ac
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.taxonomy_term.field_cloud_url
+    - field.storage.taxonomy_term.field_curl_cloud_url
     - taxonomy.vocabulary.regions
-id: taxonomy_term.regions.field_cloud_url
-field_name: field_cloud_url
+id: taxonomy_term.regions.field_curl_cloud_url
+field_name: field_curl_cloud_url
 entity_type: taxonomy_term
 bundle: regions
-label: 'Cloud URL'
+label: 'CURL Cloud URL'
 description: ''
 required: false
 translatable: false

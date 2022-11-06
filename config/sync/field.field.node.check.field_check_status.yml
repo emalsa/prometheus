@@ -1,0 +1,23 @@
+uuid: 3820b665-9a07-4527-a640-2fb67cdab2ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_check_status
+    - node.type.check
+  module:
+    - options
+id: node.check.field_check_status
+field_name: field_check_status
+entity_type: node
+bundle: check
+label: Status
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: active
+default_value_callback: ''
+settings: {  }
+field_type: list_string

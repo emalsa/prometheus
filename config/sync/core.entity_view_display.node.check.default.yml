@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.check.field_attempts_before_trigger
+    - field.field.node.check.field_check_interval
     - field.field.node.check.field_check_resource
-    - field.field.node.check.field_interval
+    - field.field.node.check.field_check_status
     - field.field.node.check.field_regions
+    - field.field.node.check.field_type
     - node.type.check
   module:
+    - options
     - text
     - user
 id: node.check.default
@@ -25,6 +28,13 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
+  field_check_interval:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
   field_check_resource:
     type: text_default
     label: above
@@ -32,14 +42,12 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
-  field_interval:
-    type: number_integer
+  field_check_status:
+    type: list_default
     label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
+    settings: {  }
     third_party_settings: {  }
-    weight: 102
+    weight: 106
     region: content
   field_regions:
     type: entity_reference_label
@@ -48,6 +56,13 @@ content:
       link: true
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
     region: content
   links:
     settings: {  }

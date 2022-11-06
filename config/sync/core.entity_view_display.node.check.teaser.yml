@@ -5,9 +5,11 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.check.field_attempts_before_trigger
+    - field.field.node.check.field_check_interval
     - field.field.node.check.field_check_resource
-    - field.field.node.check.field_interval
+    - field.field.node.check.field_check_status
     - field.field.node.check.field_regions
+    - field.field.node.check.field_type
     - node.type.check
   module:
     - user
@@ -23,6 +25,8 @@ content:
     region: content
 hidden:
   field_attempts_before_trigger: true
+  field_check_interval: true
   field_check_resource: true
-  field_interval: true
+  field_check_status: true
   field_regions: true
+  field_type: true

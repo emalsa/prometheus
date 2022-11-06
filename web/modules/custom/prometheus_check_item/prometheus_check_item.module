@@ -15,32 +15,35 @@ function prometheus_check_item_cron() {
 
 }
 
-function _trigger_checks() {
+function _trigger_checks_default() {
   try {
-    $projectId = 'sitechecker-2022';
-    $topicName = 'sitechecker_test';
-    $attributes = ['sitecheck_id' => 'ab', 'type' => 'url'];
-    $message = 'hello';
-
-    $pubsub = new PubSubClient([
-      'projectId' => $projectId,
-      'keyFile' => json_decode(file_get_contents("/app/web/modules/custom/prometheus_check_item/pubsub-sitechecker.json",
-        TRUE), TRUE),
-    ]);
-
-    $topic = $pubsub->topic($topicName);
-    $topic->publish(['data' => $message]);
-//    //    $topic->publish((new MessageBuilder)->setData($message)->build());
-//    $topic->publish([
-//      'data' => 'My new message.',
-//      'attributes' => [
-//        'location' => 'Detroit',
-//      ],
+    /** @var \Drupal\prometheus_check_item\TriggerCheck $triggerCheckService */
+    $triggerCheckService = \Drupal::service('prometheus_check_item.trigger_check');
+    $triggerCheckService->trigger('default');
+//    $projectId = 'sitechecker-2022';
+//    $topicName = 'sitechecker_test';
+//    $attributes = ['sitecheck_id' => 'ab', 'type' => 'url'];
+//    $message = 'hello';
+//
+//    $pubsub = new PubSubClient([
+//      'projectId' => $projectId,
+//      'keyFile' => json_decode(file_get_contents("/app/web/modules/custom/prometheus_check_item/pubsub-sitechecker.json",
+//        TRUE), TRUE),
 //    ]);
-    print('Message published' . PHP_EOL);
-    \Drupal::logger('test')->notice('Message published');
-
-    \Drupal::messenger()->addMessage('Message published');
+//
+//    $topic = $pubsub->topic($topicName);
+//    $topic->publish(['data' => $message]);
+////    //    $topic->publish((new MessageBuilder)->setData($message)->build());
+////    $topic->publish([
+////      'data' => 'My new message.',
+////      'attributes' => [
+////        'location' => 'Detroit',
+////      ],
+////    ]);
+//    print('Message published' . PHP_EOL);
+//    \Drupal::logger('test')->notice('Message published');
+//
+//    \Drupal::messenger()->addMessage('Message published');
   }
   catch (\Exception $exception) {
     $msg = $exception->getMessage();

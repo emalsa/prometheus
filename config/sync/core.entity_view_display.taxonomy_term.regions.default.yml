@@ -3,10 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.regions.field_cloud_url
+    - field.field.taxonomy_term.regions.field_curl_cloud_url
     - field.field.taxonomy_term.regions.field_machine_name
+    - field.field.taxonomy_term.regions.field_region_status
     - taxonomy.vocabulary.regions
   module:
+    - options
     - text
 id: taxonomy_term.regions.default
 targetEntityType: taxonomy_term
@@ -20,13 +22,13 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  field_cloud_url:
+  field_curl_cloud_url:
     type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 1
+    weight: 3
     region: content
   field_machine_name:
     type: string
@@ -35,5 +37,12 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_region_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
 hidden: {  }

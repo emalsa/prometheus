@@ -1,0 +1,27 @@
+uuid: a6c85768-1dc9-436f-b9ca-ae298b97c153
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_type
+field_name: field_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: url
+      label: Url
+    -
+      value: ping
+      label: Ping
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -4,11 +4,11 @@ status: true
 dependencies:
   module:
     - prometheus_check_item
-title: 'Trigger Checks'
+title: 'Trigger Checks Default'
 id: trigger_checks
 weight: -3
 module: prometheus_check_item
-callback: _trigger_checks
+callback: _trigger_checks_default
 scheduler:
   id: simple
 launcher:

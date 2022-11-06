@@ -1,15 +1,15 @@
-uuid: 07b73367-279d-4ad7-a98b-937f21b13fca
+uuid: c4270e43-be21-49a4-912d-e714331124a2
 langcode: en
 status: true
 dependencies:
   module:
     - taxonomy
-id: taxonomy_term.field_cloud_url
-field_name: field_cloud_url
+id: taxonomy_term.field_curl_cloud_url
+field_name: field_curl_cloud_url
 entity_type: taxonomy_term
 type: string
 settings:
-  max_length: 255
+  max_length: 510
   case_sensitive: false
   is_ascii: false
 module: core
