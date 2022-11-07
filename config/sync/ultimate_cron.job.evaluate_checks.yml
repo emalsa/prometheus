@@ -1,14 +1,14 @@
-uuid: 24e960c6-5d0e-4b59-b786-c6b1eec432ad
+uuid: 311b6c3c-0e08-4a67-bed0-b13f643e205f
 langcode: en
 status: true
 dependencies:
   module:
     - prometheus_check_item
-title: 'Trigger Checks Default'
-id: trigger_checks
+title: 'Evaluate Checks'
+id: evaluate_checks
 weight: -3
 module: prometheus_check_item
-callback: _trigger_checks_default
+callback: _evaluate_checks
 scheduler:
   id: simple
 launcher:

@@ -9,9 +9,46 @@ dependencies:
     - field.field.node.check_item.field_page_load
     - field.field.node.check_item.field_status
     - field.field.node.check_item.field_status_code
+    - field.field.node.check_item.field_time_appconnect
+    - field.field.node.check_item.field_time_connect
+    - field.field.node.check_item.field_time_namelookup
+    - field.field.node.check_item.field_time_pretransfer
+    - field.field.node.check_item.field_time_redirect
+    - field.field.node.check_item.field_time_starttransfer
+    - field.field.node.check_item.field_time_total
     - node.type.check_item
   module:
+    - field_group
+    - field_layout
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  field_group:
+    group_time:
+      children:
+        - field_time_name_lookup
+        - field_time_connect
+        - field_time_appconnect
+        - field_time_pretransfer
+        - field_time_redirect
+        - field_time_starttransfer
+        - field_time_namelookup
+        - field_time_total
+      label: Time
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
 id: node.check_item.default
 targetEntityType: node
 bundle: check_item
@@ -66,6 +103,55 @@ content:
   field_status_code:
     type: number
     weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_time_appconnect:
+    type: number
+    weight: 28
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_time_connect:
+    type: number
+    weight: 27
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_time_namelookup:
+    type: number
+    weight: 32
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_time_pretransfer:
+    type: number
+    weight: 29
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_time_redirect:
+    type: number
+    weight: 30
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_time_starttransfer:
+    type: number
+    weight: 31
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_time_total:
+    type: number
+    weight: 33
     region: content
     settings:
       placeholder: ''

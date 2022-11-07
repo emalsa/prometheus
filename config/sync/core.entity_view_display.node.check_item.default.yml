@@ -9,10 +9,46 @@ dependencies:
     - field.field.node.check_item.field_page_load
     - field.field.node.check_item.field_status
     - field.field.node.check_item.field_status_code
+    - field.field.node.check_item.field_time_appconnect
+    - field.field.node.check_item.field_time_connect
+    - field.field.node.check_item.field_time_namelookup
+    - field.field.node.check_item.field_time_pretransfer
+    - field.field.node.check_item.field_time_redirect
+    - field.field.node.check_item.field_time_starttransfer
+    - field.field.node.check_item.field_time_total
     - node.type.check_item
   module:
+    - field_group
+    - field_layout
+    - layout_discovery
     - options
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  field_group:
+    group_time:
+      children:
+        - field_time_name_lookup
+        - field_time_connect
+        - field_time_appconnect
+        - field_time_pretransfer
+        - field_time_redirect
+        - field_time_starttransfer
+        - field_time_namelookup
+        - field_time_total
+      label: Time
+      parent_name: ''
+      region: content
+      weight: 7
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
 id: node.check_item.default
 targetEntityType: node
 bundle: check_item
@@ -64,6 +100,83 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_time_appconnect:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_time_connect:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_time_namelookup:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_time_pretransfer:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_time_redirect:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_time_starttransfer:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_time_total:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 15
     region: content
   links:
     settings: {  }

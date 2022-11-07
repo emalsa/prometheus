@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '138434eba8301b6f3f9f60d0c4ce1b43b0c6b7ca',
+        'reference' => '58badabe256230c7803e092c54035edf30f4da6b',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -430,6 +430,15 @@
             'reference' => '4.0.1',
             'dev_requirement' => false,
         ),
+        'drupal/field_group' => array(
+            'pretty_version' => '3.4.0',
+            'version' => '3.4.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/field_group',
+            'aliases' => array(),
+            'reference' => '8.x-3.4',
+            'dev_requirement' => false,
+        ),
         'drupal/jsonapi_extras' => array(
             'pretty_version' => '3.21.0',
             'version' => '3.21.0.0',
@@ -454,7 +463,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '138434eba8301b6f3f9f60d0c4ce1b43b0c6b7ca',
+            'reference' => '58badabe256230c7803e092c54035edf30f4da6b',
             'dev_requirement' => false,
         ),
         'drupal/redis' => array(

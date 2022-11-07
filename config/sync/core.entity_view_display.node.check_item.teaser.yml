@@ -10,9 +10,23 @@ dependencies:
     - field.field.node.check_item.field_page_load
     - field.field.node.check_item.field_status
     - field.field.node.check_item.field_status_code
+    - field.field.node.check_item.field_time_appconnect
+    - field.field.node.check_item.field_time_connect
+    - field.field.node.check_item.field_time_namelookup
+    - field.field.node.check_item.field_time_pretransfer
+    - field.field.node.check_item.field_time_redirect
+    - field.field.node.check_item.field_time_starttransfer
+    - field.field.node.check_item.field_time_total
     - node.type.check_item
   module:
+    - field_layout
+    - layout_discovery
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.check_item.teaser
 targetEntityType: node
 bundle: check_item
@@ -30,3 +44,10 @@ hidden:
   field_page_load: true
   field_status: true
   field_status_code: true
+  field_time_appconnect: true
+  field_time_connect: true
+  field_time_namelookup: true
+  field_time_pretransfer: true
+  field_time_redirect: true
+  field_time_starttransfer: true
+  field_time_total: true

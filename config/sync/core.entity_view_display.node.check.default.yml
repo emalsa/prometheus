@@ -11,9 +11,16 @@ dependencies:
     - field.field.node.check.field_type
     - node.type.check
   module:
+    - field_layout
+    - layout_discovery
     - options
     - text
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.check.default
 targetEntityType: node
 bundle: check

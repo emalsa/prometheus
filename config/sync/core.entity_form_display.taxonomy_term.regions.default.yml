@@ -8,8 +8,15 @@ dependencies:
     - field.field.taxonomy_term.regions.field_region_status
     - taxonomy.vocabulary.regions
   module:
+    - field_layout
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: taxonomy_term.regions.default
 targetEntityType: taxonomy_term
 bundle: regions

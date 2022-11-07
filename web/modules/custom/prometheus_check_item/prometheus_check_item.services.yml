@@ -2,3 +2,7 @@ services:
   prometheus_check_item.trigger_check:
     class: Drupal\prometheus_check_item\TriggerCheck
     arguments: [ '@entity_type.manager', '@http_client', '@logger.factory' ]
+
+  prometheus_check_item.evaluate_checks:
+    class: Drupal\prometheus_check_item\EvaluateChecks
+    arguments: ['@entity_type.manager', '@logger.factory']

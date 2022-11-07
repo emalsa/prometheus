@@ -12,6 +12,10 @@ use GuzzleHttp\ClientInterface;
  */
 class TriggerCheck {
 
+  public const TO_PROCESS_STATUS = 'to_process';
+
+  public const CHECKING_STATUS = 'checking';
+
   /**
    * The entity type manager.
    *
@@ -32,6 +36,7 @@ class TriggerCheck {
    * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
   protected $logger;
+
 
   protected NodeInterface $check;
 
@@ -80,7 +85,7 @@ class TriggerCheck {
 
   protected function dispatch() {
     $this->cloudUrl = $this->checkData['cloud_url'];
-//    $this->cloudUrl = 'http://localhost:8080';
+    //    $this->cloudUrl = 'http://localhost:8080';
     $response = $this->client->request(
       'POST',
       $this->cloudUrl,

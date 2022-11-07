@@ -13,6 +13,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Utility\Token;
 use Drupal\node\NodeInterface;
+use Drupal\prometheus_check_item\TriggerCheck;
 use Drupal\rest\Plugin\ResourceBase;
 use Drupal\rest\ResourceResponse;
 use Psr\Log\LoggerInterface;
@@ -36,9 +37,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class CheckItemResource extends ResourceBase {
 
-  const TO_PROCESS_STATUS = 'to_process';
 
-  const CHECKING_STATUS = 'checking';
 
   /**
    * A current user instance which is logged in the session.
@@ -151,19 +150,19 @@ class CheckItemResource extends ResourceBase {
     }
 
     $node->set('field_full_response', json_encode($this->jsonData));
-    $node->set('field_status', self::TO_PROCESS_STATUS);
+    $node->set('field_status', TriggerCheck::TO_PROCESS_STATUS);
     $node->save();
 
   }
 
-  protected function getCheckItemNode(): EntityInterface|null {
+  protected function getCheckItemNode(): array|null {
     $node = $this->entityTypeManager->getStorage('node')->load($this->jsonData['check_item_id']);
     if (!$node instanceof NodeInterface || $node->bundle() !== 'check_item') {
       // Log!
       return NULL;
     }
 
-    if ($node->get('field_status')->value !== self::CHECKING_STATUS) {
+    if ($node->get('field_status')->value !== TriggerCheck::CHECKING_STATUS) {
       // Log!
       return NULL;
     }
