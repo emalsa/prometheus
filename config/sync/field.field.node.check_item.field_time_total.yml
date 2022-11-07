@@ -1,0 +1,23 @@
+uuid: ec158c6d-2587-41b6-9d6d-c0ee35541197
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_total
+    - node.type.check_item
+id: node.check_item.field_time_total
+field_name: field_time_total
+entity_type: node
+bundle: check_item
+label: 'Time total'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

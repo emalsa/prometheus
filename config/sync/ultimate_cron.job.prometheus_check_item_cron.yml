@@ -1,0 +1,17 @@
+uuid: f7f0800e-ab32-4a3c-ac2d-cebc06a9e2b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - prometheus_check_item
+title: 'Default cron handler'
+id: prometheus_check_item_cron
+weight: 0
+module: prometheus_check_item
+callback: prometheus_check_item_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

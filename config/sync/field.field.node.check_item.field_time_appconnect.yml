@@ -1,0 +1,23 @@
+uuid: 1a6b1f02-eba1-491d-8501-8fbe244f0ad2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_appconnect
+    - node.type.check_item
+id: node.check_item.field_time_appconnect
+field_name: field_time_appconnect
+entity_type: node
+bundle: check_item
+label: 'Time Appconnect'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

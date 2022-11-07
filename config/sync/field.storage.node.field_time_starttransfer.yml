@@ -1,0 +1,20 @@
+uuid: 0ea788ee-6a1a-4ba0-9ae4-a1e8cda2a8d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_time_starttransfer
+field_name: field_time_starttransfer
+entity_type: node
+type: decimal
+settings:
+  precision: 30
+  scale: 10
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

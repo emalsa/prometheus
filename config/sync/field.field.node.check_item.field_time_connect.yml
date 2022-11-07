@@ -1,0 +1,23 @@
+uuid: 5016c46d-d2d2-4815-a049-c6b7fe4100fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_connect
+    - node.type.check_item
+id: node.check_item.field_time_connect
+field_name: field_time_connect
+entity_type: node
+bundle: check_item
+label: 'Time Connect'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

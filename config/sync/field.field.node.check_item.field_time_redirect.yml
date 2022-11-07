@@ -1,0 +1,23 @@
+uuid: c3ca780e-086f-477e-b89c-036b45b19ed8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_redirect
+    - node.type.check_item
+id: node.check_item.field_time_redirect
+field_name: field_time_redirect
+entity_type: node
+bundle: check_item
+label: 'Time redirect'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

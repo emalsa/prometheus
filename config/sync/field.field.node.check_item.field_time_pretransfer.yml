@@ -1,0 +1,23 @@
+uuid: 099300c0-bd69-490d-98c2-c599ec309803
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_pretransfer
+    - node.type.check_item
+id: node.check_item.field_time_pretransfer
+field_name: field_time_pretransfer
+entity_type: node
+bundle: check_item
+label: 'Time Pretransfer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

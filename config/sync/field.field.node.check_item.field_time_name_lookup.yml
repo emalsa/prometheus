@@ -1,0 +1,23 @@
+uuid: c056ab2f-c51d-430c-8810-f961f3a954e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_name_lookup
+    - node.type.check_item
+id: node.check_item.field_time_name_lookup
+field_name: field_time_name_lookup
+entity_type: node
+bundle: check_item
+label: 'Time Name lookup'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

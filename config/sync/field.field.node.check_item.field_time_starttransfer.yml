@@ -1,0 +1,23 @@
+uuid: c8457c79-4a53-482e-9609-3063bf3a76b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_starttransfer
+    - node.type.check_item
+id: node.check_item.field_time_starttransfer
+field_name: field_time_starttransfer
+entity_type: node
+bundle: check_item
+label: 'Time starttransfer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal
