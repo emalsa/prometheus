@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '58badabe256230c7803e092c54035edf30f4da6b',
+        'reference' => 'b65c2a4f8e67428abaf9221ec750dfd8734a6325',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -439,6 +439,15 @@
             'reference' => '8.x-3.4',
             'dev_requirement' => false,
         ),
+        'drupal/hook_event_dispatcher' => array(
+            'pretty_version' => '3.3.1',
+            'version' => '3.3.1.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/hook_event_dispatcher',
+            'aliases' => array(),
+            'reference' => '3.3.1',
+            'dev_requirement' => false,
+        ),
         'drupal/jsonapi_extras' => array(
             'pretty_version' => '3.21.0',
             'version' => '3.21.0.0',
@@ -463,7 +472,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '58badabe256230c7803e092c54035edf30f4da6b',
+            'reference' => 'b65c2a4f8e67428abaf9221ec750dfd8734a6325',
             'dev_requirement' => false,
         ),
         'drupal/redis' => array(

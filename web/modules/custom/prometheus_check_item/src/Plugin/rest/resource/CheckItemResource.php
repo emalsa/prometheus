@@ -38,7 +38,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CheckItemResource extends ResourceBase {
 
 
-
   /**
    * A current user instance which is logged in the session.
    *
@@ -93,38 +92,20 @@ class CheckItemResource extends ResourceBase {
     );
   }
 
-  public function get() {
-    $result = ['ss' => 'test', 'wow' => ['nein', 'nesin']];
-
-    $response = new ResourceResponse($result);
-    $response->addCacheableDependency($result);
-    return $response;
-  }
+  //  public function get() {
+  //    $result = ['ss' => 'test', 'wow' => ['nein', 'nesin']];
+  //
+  //    $response = new ResourceResponse($result);
+  //    $response->addCacheableDependency($result);
+  //    return $response;
+  //  }
 
   /**
-   * Responds to GET request.
-   * Returns a list of taxonomy terms.
+   * Responds to POST request.
    */
   public function post(Request $request) {
-    //    return;
-    //    // Implementing our custom REST Resource here.
-    //    // Use currently logged user after passing authentication and validating the access of term list.
-    //    if (!$this->loggedUser->hasPermission('access content')) {
-    //      throw new AccessDeniedHttpException();
-    //    }
-    //    $vid = 'vb';
-    //    $terms = \Drupal::entityTypeManager()
-    //      ->getStorage('taxonomy_term')
-    //      ->loadTree($vid);
-    //    foreach ($terms as $term) {
-    //      $term_result[] = [
-    //        'id' => $term->tid,
-    //        'name' => $term->name,
-    //      ];
-    //    }
     try {
-      $jsonData = json_decode($request->getContent(), TRUE);
-      $this->jsonData = $jsonData;
+      $this->jsonData = json_decode($request->getContent(), TRUE);
       if ($this->jsonData['success']) {
         $this->onSuccess();
       }
@@ -146,23 +127,23 @@ class CheckItemResource extends ResourceBase {
     // Load Check item by id
     $node = $this->getCheckItemNode();
     if (!$node) {
+      // Log!
       return;
     }
 
     $node->set('field_full_response', json_encode($this->jsonData));
     $node->set('field_status', TriggerCheck::TO_PROCESS_STATUS);
     $node->save();
-
   }
 
-  protected function getCheckItemNode(): array|null {
+  protected function getCheckItemNode(): NodeInterface|null {
     $node = $this->entityTypeManager->getStorage('node')->load($this->jsonData['check_item_id']);
     if (!$node instanceof NodeInterface || $node->bundle() !== 'check_item') {
       // Log!
       return NULL;
     }
 
-    if ($node->get('field_status')->value !== TriggerCheck::CHECKING_STATUS) {
+    if ($node->get('field_status')->isEmpty() || $node->get('field_status')->value !== TriggerCheck::CHECKING_STATUS) {
       // Log!
       return NULL;
     }

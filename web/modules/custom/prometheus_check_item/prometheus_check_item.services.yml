@@ -6,3 +6,10 @@ services:
   prometheus_check_item.evaluate_checks:
     class: Drupal\prometheus_check_item\EvaluateChecks
     arguments: ['@entity_type.manager', '@logger.factory']
+
+  # Subscriber to the event we dispatch in hook_user_login.
+  custom_events_and_subscribers.check_item_analyze:
+    class: Drupal\prometheus_check_item\EventSubscriber\CheckItemAnalyzeSubscriber
+    arguments: ['@messenger', '@date.formatter']
+    tags:
+      - { name: 'event_subscriber' }

@@ -2,31 +2,29 @@
 
 namespace Drupal\prometheus_check_item\Event;
 
-use Drupal\user\UserInterface;
-use Symfony\Contracts\EventDispatcher\Event;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Component\EventDispatcher\Event;
 
 /**
  * Event that is fired when a user logs in.
  */
 class CheckItemAnalyzeEvent extends Event {
 
-  const EVENT_NAME = 'custom_events_user_login';
+  const EVENT_NAME = 'check_item_analyze_event';
 
   /**
-   * The user account.
-   *
-   * @var \Drupal\user\UserInterface
+   * @var \Drupal\Core\Entity\EntityInterface
    */
-  public $account;
+  public EntityInterface $node;
 
   /**
    * Constructs the object.
    *
-   * @param \Drupal\user\UserInterface $account
+   * @param  \Drupal\node\NodeInterface  $node
    *   The account of the user logged in.
    */
-  public function __construct(UserInterface $account) {
-    $this->account = $account;
+  public function __construct(EntityInterface $node) {
+    $this->node = $node;
   }
 
 }

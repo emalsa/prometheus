@@ -5,8 +5,8 @@
  * Primary module hooks for prometheus_check_item module.
  */
 
-use Google\Cloud\PubSub\MessageBuilder;
-use Google\Cloud\PubSub\PubSubClient;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\prometheus_check_item\Event\CheckItemAnalyzeEvent;
 
 /**
  * Implements hook_cron().
@@ -15,7 +15,23 @@ function prometheus_check_item_cron() {
 
 }
 
-function _trigger_checks_default() {
+/**
+ * @param  \Drupal\Core\Entity\EntityInterface  $entity
+ *
+ */
+function prometheus_check_item_node_update(EntityInterface $entity) {
+  // Instantiate our event.
+  $event = new CheckItemAnalyzeEvent($entity);
+
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $event_dispatcher->dispatch(CheckItemAnalyzeEvent::EVENT_NAME, $event);
+}
+
+/**
+ * Cronjob:
+ * Trigger check for default
+ */
+function _trigger_checks_default(): void {
   try {
     /** @var \Drupal\prometheus_check_item\TriggerCheck $triggerCheckService */
     $triggerCheckService = \Drupal::service('prometheus_check_item.trigger_check');
@@ -28,7 +44,10 @@ function _trigger_checks_default() {
 
 }
 
-function _evaluate_checks() {
+/**
+ * Evaluate the check items after they has been checked.
+ */
+function _evaluate_checks(): void {
   try {
     /** @var \Drupal\prometheus_check_item\EvaluateChecks $evaluateCheckService */
     $evaluateCheckService = \Drupal::service('prometheus_check_item.evaluate_checks');

@@ -8,43 +8,67 @@ use Drupal\node\NodeInterface;
 use GuzzleHttp\ClientInterface;
 
 /**
- * Service description.
+ * Dispatches the checks to the cloud.
  */
 class TriggerCheck {
 
+  /**
+   * Status: To Process.
+   */
   public const TO_PROCESS_STATUS = 'to_process';
 
+  /**
+   * Status: Checking.
+   */
   public const CHECKING_STATUS = 'checking';
+
+  /**
+   * The fallback cloud run url.
+   */
+  public const DEFAULT_CURL_CLOUD_URL = 'https://prometheuscurl-k7x262eijq-od.a.run.app';
 
   /**
    * The entity type manager.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityTypeManager;
+  protected EntityTypeManagerInterface $entityTypeManager;
 
   /**
    * The HTTP client.
    *
    * @var \GuzzleHttp\ClientInterface
    */
-  protected $client;
+  protected ClientInterface $client;
 
   /**
    * The logger channel factory.
    *
    * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
-  protected $logger;
+  protected LoggerChannelFactoryInterface $logger;
 
-
+  /**
+   * The check node.
+   *
+   * @var \Drupal\node\NodeInterface
+   */
   protected NodeInterface $check;
 
-  protected array $checkData;
-
+  /**
+   * The cloud url to use.
+   *
+   * @var string
+   */
   protected string $cloudUrl;
 
-  const DEFAULT_CURL_CLOUD_URL = 'https://prometheuscurl-k7x262eijq-od.a.run.app';
+  /**
+   * The data to be sent to cloud.
+   *
+   * @var array
+   */
+  protected array $checkData;
+
 
   /**
    * Constructs a TriggerCheck object.
@@ -63,76 +87,41 @@ class TriggerCheck {
   }
 
   /**
-   * Method description.
+   * Prepares and dispatches the checks.
+   *
+   * @param $intervalType
+   * The interval type used.
+   *
+   * @return void
    */
-  public function trigger($interval) {
-    $properties = $this->getCheckProperties($interval);
+  public function trigger($intervalType): void {
+    $properties = [
+      'type' => 'check',
+      'field_check_interval' => $intervalType,
+      'field_check_status' => self::CHECKING_STATUS,
+    ];
+
+    /** @var \Drupal\node\NodeInterface $checks */
     $checks = $this->entityTypeManager->getStorage('node')->loadByProperties($properties);
     if (empty($checks)) {
       // Log.
       return;
     }
 
-    foreach ($checks as $check) {
-      $checkData = [];
-      $this->checkData = [];
-      $this->check = $check;
+    foreach ($checks as $this->check) {
       $checkItemId = $this->createCheckItem();
-      $this->checkData = $this->getCheckData($checkItemId);
+      $this->checkData = $this->buildCheckData($checkItemId);
       $this->dispatch();
     }
   }
 
-  protected function dispatch() {
-    $this->cloudUrl = $this->checkData['cloud_url'];
-    //    $this->cloudUrl = 'http://localhost:8080';
-    $response = $this->client->request(
-      'POST',
-      $this->cloudUrl,
-      [
-        'form_params' => $this->checkData,
-      ]
-    );
-    $a = 1;
-  }
 
-
-  protected function getCheckProperties($interval) {
-    return [
-      'type' => 'check',
-      'field_check_interval' => $interval,
-      'field_check_status' => 'active',
-    ];
-  }
-
-
-  protected function getCheckData($checkItemId) {
-    return [
-      'url' => $this->check->get('field_check_resource')->value,
-      'type' => $this->check->get('field_type')->value,
-      'check_item_id' => $checkItemId,
-      'cloud_url' => $this->getCloudUrl(),
-    ];
-  }
-
-  protected function getCloudUrl(): string {
-    if ($this->checkData['type'] = 'url') {
-      $fieldName = 'field_curl_cloud_url';
-    }
-
-    $regionTerm = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties([
-      'vid' => 'regions',
-      'field_region_status' => 'active',
-    ]);
-
-    if (empty($regionTerm)) {
-      // Log!
-      return self::DEFAULT_CURL_CLOUD_URL;
-    }
-    return $regionTerm->get($fieldName)->value;
-  }
-
-  protected function createCheckItem() {
+  /**
+   * Creates the check item node.
+   *
+   * @return int
+   */
+  protected function createCheckItem(): int {
     $checkItem = $this->entityTypeManager->getStorage('node')->create([
       'type' => 'check_item',
       'field_dom_content_loaded' => 0,
@@ -142,8 +131,72 @@ class TriggerCheck {
     ]);
 
     $checkItem->save();
-    $a = 1;
     return $checkItem->id();
+  }
+
+  /**
+   * Builds the POST body data which will be sent.
+   *
+   * @param $checkItemId
+   * The check item nid.
+   *
+   * @return array
+   * The data
+   */
+  protected function buildCheckData($checkItemId): array {
+    return [
+      'url' => $this->check->get('field_check_resource')->value,
+      'type' => $this->check->get('field_type')->value,
+      'check_item_id' => $checkItemId,
+      'cloud_url' => $this->getCloudUrl(),
+    ];
+  }
+
+
+  /**
+   * Dispatches the check to Cloud run.
+   *
+   * @return void
+   */
+  protected function dispatch(): void {
+    $this->cloudUrl = $this->checkData['cloud_url'];
+    //        $this->cloudUrl = 'http://localhost:8080';
+    $response = $this->client->request(
+      'POST',
+      $this->cloudUrl,
+      [
+        'form_params' => $this->checkData,
+      ]
+    );
+
+  }
+
+
+  /**
+   * Determines the Cloud run url.
+   *
+   * @return string
+   * The url.
+   */
+  protected function getCloudUrl(): string {
+    if ($this->checkData['type'] = 'url') {
+      $fieldName = 'field_curl_cloud_url';
+
+      /** @var \Drupal\taxonomy\Entity\Term $regionTerm */
+      $regionTerm = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties([
+        'vid' => 'regions',
+        'field_region_status' => 'active',
+      ]);
+
+      if (empty($regionTerm)) {
+        // Log!
+        return self::DEFAULT_CURL_CLOUD_URL;
+      }
+
+      return $regionTerm->get($fieldName)->value;
+    }
+
+    return 'Not supported now';
   }
 
 

@@ -16,17 +16,27 @@ class EvaluateChecks {
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityTypeManager;
+  protected EntityTypeManagerInterface $entityTypeManager;
 
   /**
    * The logger channel factory.
    *
    * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
-  protected $logger;
+  protected LoggerChannelFactoryInterface $logger;
 
+  /**
+   * The node.
+   *
+   * @var \Drupal\node\NodeInterface
+   */
   protected NodeInterface $checkItem;
 
+  /**
+   * The received data.
+   *
+   * @var array
+   */
   protected array $responseData = [];
 
   /**
@@ -54,6 +64,23 @@ class EvaluateChecks {
     }
   }
 
+  protected function getCheckItemNodes() {
+    $query = \Drupal::entityQuery('node');
+    $query->accessCheck(FALSE)
+      ->condition('type', 'check_item')
+      ->condition('field_status', TriggerCheck::TO_PROCESS_STATUS)
+      ->sort('changed', 'ASC')
+      ->range(0, 50);
+
+    $nids = $query->execute();
+    if (empty($nids)) {
+      // Log.
+      return NULL;
+    }
+
+    return $this->entityTypeManager->getStorage('node')->loadMultiple($nids);
+  }
+
   protected function evaluateResult() {
     $this->responseData = [];
     if ($this->checkItem->get('field_full_response')->isEmpty()) {
@@ -73,34 +100,13 @@ class EvaluateChecks {
       // Log!
       return;
     }
+
     $this->responseData = $responseData;
-
-    $this->setTime();
-
-    foreach ($this->responseData as $item) {
-      $a = 1;
-      $this->checkItem->save();
-    }
+    $this->setTimes();
   }
 
-  protected function getCheckItemNodes() {
-    $query = \Drupal::entityQuery('node');
-    $query->accessCheck(FALSE)
-      ->condition('type', 'check_item')
-      ->condition('field_status', TriggerCheck::TO_PROCESS_STATUS)
-      ->sort('changed', 'ASC')
-      ->range(0, 50);
 
-    $nids = $query->execute();
-    if (empty($nids)) {
-      // Log.
-      return NULL;
-    }
-
-    return $this->entityTypeManager->getStorage('node')->loadMultiple($nids);
-  }
-
-  protected function setTime() {
+  protected function setTimes() {
     $searchFields = [
       'field_time_appconnect' => 'time_appconnect',
       'field_time_connect' => 'time_connect',
