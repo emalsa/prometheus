@@ -148,7 +148,7 @@ class TriggerCheck {
     return [
       'url' => $this->check->get('field_check_resource')->value,
       'type' => $this->check->get('field_type')->value,
-      'check_item_id' => $checkItemId,
+      'check_item_id' => (string) $checkItemId,
       'cloud_url' => $this->getCloudUrl(),
       'from_host' => \Drupal::request()->getSchemeAndHttpHost(),
     ];
@@ -163,13 +163,20 @@ class TriggerCheck {
   protected function dispatch(): void {
     $this->cloudUrl = $this->checkData['cloud_url'];
     //        $this->cloudUrl = 'http://localhost:8080';
-    $response = $this->client->request(
-      'POST',
-      $this->cloudUrl,
-      [
-        'form_params' => $this->checkData,
-      ]
-    );
+    try {
+      $response = $this->client->request(
+        'POST',
+        $this->cloudUrl,
+        [
+          'form_params' => $this->checkData,
+        ]
+      );
+    }
+    catch (\Exception $exception) {
+      $msg = $exception->getMessage();
+      \Drupal::logger('test')->error($msg);
+    }
+
 
   }
 
