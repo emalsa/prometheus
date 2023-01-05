@@ -25,6 +25,7 @@ $settings['trusted_host_patterns'] = [
   '^.+\.nicastro\.io$',
 ];
 
+
 if (isset($GLOBALS['request']) && '/web/index.php' === $GLOBALS['request']->server->get('SCRIPT_NAME')) {
   $GLOBALS['request']->server->set('SCRIPT_NAME', '/index.php');
 }
