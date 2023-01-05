@@ -69,8 +69,8 @@ class EvaluateChecks {
     $query->accessCheck(FALSE)
       ->condition('type', 'check_item')
       ->condition('field_status', TriggerCheck::TO_PROCESS_STATUS)
-      ->sort('changed', 'DESC')
-      ->range(0, 5);
+      ->sort('changed', 'ASC')
+      ->range(0, 250);
 
     $nids = $query->execute();
     if (empty($nids)) {
