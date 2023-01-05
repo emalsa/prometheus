@@ -108,7 +108,8 @@ class TriggerCheck {
       return;
     }
 
-    foreach ($checks as $this->check) {
+    foreach ($checks as $check) {
+      $this->check = $check;
       $checkItemId = $this->createCheckItem();
       $this->checkData = $this->buildCheckData($checkItemId);
       $this->dispatch();
