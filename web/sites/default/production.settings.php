@@ -7,7 +7,7 @@
 
 $databases['default']['default'] = [
   'driver' => 'mysql',
-  'database' => 'aprometheus',
+  'database' => 'prometheus',
   'username' => 'prometheus',
   'password' => 'MzZaslaksd=22dsa3=dsadsa33=)=)*0091',
   'host' => '127.0.0.1',
