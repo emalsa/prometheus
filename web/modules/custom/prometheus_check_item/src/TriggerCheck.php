@@ -69,15 +69,14 @@ class TriggerCheck {
    */
   protected array $checkData;
 
-
   /**
    * Constructs a TriggerCheck object.
    *
-   * @param  \Drupal\Core\Entity\EntityTypeManagerInterface  $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
-   * @param  \GuzzleHttp\ClientInterface  $client
+   * @param \GuzzleHttp\ClientInterface $client
    *   The HTTP client.
-   * @param  \Drupal\Core\Logger\LoggerChannelFactoryInterface  $logger
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
    *   The logger channel factory.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, ClientInterface $client, LoggerChannelFactoryInterface $logger) {
@@ -90,7 +89,7 @@ class TriggerCheck {
    * Prepares and dispatches the checks.
    *
    * @param $intervalType
-   * The interval type used.
+   *   The interval type used.
    *
    * @return void
    */
@@ -116,7 +115,6 @@ class TriggerCheck {
     }
   }
 
-
   /**
    * Creates the check item node.
    *
@@ -139,21 +137,21 @@ class TriggerCheck {
    * Builds the POST body data which will be sent.
    *
    * @param $checkItemId
-   * The check item nid.
+   *   The check item nid.
    *
    * @return array
-   * The data
+   *   The data
    */
   protected function buildCheckData($checkItemId): array {
     return [
       'url' => $this->check->get('field_check_resource')->value,
       'type' => $this->check->get('field_type')->value,
       'check_item_id' => (string) $checkItemId,
-      'cloud_url' => $this->getCloudUrl(),
+      // 'cloud_url' => $this->getCloudUrl(),
+      'cloud_url' => 'https://c348bb49-5218-4de9-ba34-732f9a0f2106.mock.pstmn.io',
       'from_host' => \Drupal::request()->getSchemeAndHttpHost() . '/api/check_item/update',
     ];
   }
-
 
   /**
    * Dispatches the check to Cloud run.
@@ -162,13 +160,13 @@ class TriggerCheck {
    */
   protected function dispatch(): void {
     $this->cloudUrl = $this->checkData['cloud_url'];
-    //        $this->cloudUrl = 'http://localhost:8080';
+    // $this->cloudUrl = 'http://localhost:8080';
     try {
       $response = $this->client->request(
         'POST',
         $this->cloudUrl,
         [
-          'form_params' => $this->checkData,
+          'json' => $this->checkData,
         ]
       );
     }
@@ -177,15 +175,13 @@ class TriggerCheck {
       \Drupal::logger('test')->error($msg);
     }
 
-
   }
-
 
   /**
    * Determines the Cloud run url.
    *
    * @return string
-   * The url.
+   *   The url.
    */
   protected function getCloudUrl(): string {
     if ($this->checkData['type'] = 'url') {
@@ -207,6 +203,5 @@ class TriggerCheck {
 
     return 'Not supported now';
   }
-
 
 }
