@@ -19,9 +19,9 @@ $databases['default']['default'] = [
 $settings['config_sync_directory'] = '../config/sync';
 
 $settings['trusted_host_patterns'] = [
-  '^nicastro\.io$',
+  '^prometheus\.ch$',
   '^.+\.nicastro\.io$',
-  '^nicastro\.io$',
+  '^80.74.145.85\.io$',
   '^.+\.nicastro\.io$',
 ];
 
