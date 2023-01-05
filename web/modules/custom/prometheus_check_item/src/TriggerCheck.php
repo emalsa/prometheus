@@ -147,8 +147,8 @@ class TriggerCheck {
       'url' => $this->check->get('field_check_resource')->value,
       'type' => $this->check->get('field_type')->value,
       'check_item_id' => (string) $checkItemId,
-      // 'cloud_url' => $this->getCloudUrl(),
-      'cloud_url' => 'https://c348bb49-5218-4de9-ba34-732f9a0f2106.mock.pstmn.io',
+       'cloud_url' => $this->getCloudUrl(),
+//      'cloud_url' => 'https://c348bb49-5218-4de9-ba34-732f9a0f2106.mock.pstmn.io',
       'from_host' => \Drupal::request()->getSchemeAndHttpHost() . '/api/check_item/update',
     ];
   }
