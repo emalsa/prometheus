@@ -98,7 +98,7 @@ class TriggerCheck {
     $properties = [
       'type' => 'check',
       'field_check_interval' => $intervalType,
-      'field_check_status' => self::CHECKING_STATUS,
+      'field_check_status' => 'active',
     ];
 
     /** @var \Drupal\node\NodeInterface $checks */
@@ -149,6 +149,7 @@ class TriggerCheck {
       'type' => $this->check->get('field_type')->value,
       'check_item_id' => $checkItemId,
       'cloud_url' => $this->getCloudUrl(),
+      'from_host' => \Drupal::request()->getSchemeAndHttpHost(),
     ];
   }
 
