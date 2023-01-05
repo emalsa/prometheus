@@ -127,7 +127,7 @@ class TriggerCheck {
       'field_dom_content_loaded' => 0,
       'field_page_load' => 0,
       'field_check_ref' => ['target_id' => $this->check->id()],
-      'field_status' => 'active',
+      'field_status' => self::CHECKING_STATUS,
     ]);
 
     $checkItem->save();
