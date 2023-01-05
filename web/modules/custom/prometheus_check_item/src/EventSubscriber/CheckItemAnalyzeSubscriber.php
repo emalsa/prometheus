@@ -58,7 +58,6 @@ class CheckItemAnalyzeSubscriber implements EventSubscriberInterface {
    *   Dat event object yo.
    */
   public function onSave(CheckItemAnalyzeEvent $event) {
-    \Drupal::messenger()->addError('Test');
     if ($event->node->bundle() !== 'check_item'
       || $event->node->get('field_status')->isEmpty()
       || $event->node->get('field_status')->value !== TriggerCheck::TO_PROCESS_STATUS
