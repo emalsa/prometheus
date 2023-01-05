@@ -150,7 +150,7 @@ class TriggerCheck {
       'type' => $this->check->get('field_type')->value,
       'check_item_id' => (string) $checkItemId,
       'cloud_url' => $this->getCloudUrl(),
-      'from_host' => \Drupal::request()->getSchemeAndHttpHost(),
+      'from_host' => \Drupal::request()->getSchemeAndHttpHost() . '/api/check_item/update',
     ];
   }
 
