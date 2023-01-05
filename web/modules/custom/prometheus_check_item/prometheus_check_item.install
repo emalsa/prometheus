@@ -92,5 +92,12 @@ function prometheus_check_item_requirements($phase) {
     ];
   }
 
-  return $requirements;
+  //  return $requirements;
+}
+
+/**
+ * Test updb on deployments
+ */
+function prometheus_check_item_update_10001(&$sandbox) {
+  // Only for test.
 }

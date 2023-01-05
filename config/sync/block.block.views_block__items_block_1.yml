@@ -17,10 +17,10 @@ provider: null
 plugin: 'views_block:items-block_1'
 settings:
   id: 'views_block:items-block_1'
-  label: ''
+  label: Items
   label_display: visible
   provider: views
-  views_label: ''
+  views_label: Items
   items_per_page: none
 visibility:
   request_path:
