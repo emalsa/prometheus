@@ -23,6 +23,11 @@ class TriggerCheck {
   public const CHECKING_STATUS = 'checking';
 
   /**
+   * Status: Checked.
+   */
+  public const CHECKED_STATUS = 'checked';
+
+  /**
    * The fallback cloud.
    */
   public const DEFAULT_CURL_CLOUD_URL = 'http://ec2-35-158-96-81.eu-central-1.compute.amazonaws.com/index.php';

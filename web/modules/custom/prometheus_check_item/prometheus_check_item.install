@@ -5,6 +5,8 @@
  * Install, update and uninstall functions for the prometheus_check_item module.
  */
 
+use Drupal\prometheus_check_item\TriggerCheck;
+
 /**
  * Implements hook_install().
  */
@@ -96,8 +98,22 @@ function prometheus_check_item_requirements($phase) {
 }
 
 /**
- * Test updb on deployments
+ * Change check item status for clean start
  */
-function prometheus_check_item_update_10001(&$sandbox) {
-  // Only for test.
+function prometheus_check_item_update_10002(&$sandbox) {
+  $query = \Drupal::entityQuery('node');
+  $query
+    ->accessCheck(FALSE)
+    ->condition('type', 'check_item');
+  $nids = $query->execute();
+  if (empty($nids)) {
+    // Log.
+    return NULL;
+  }
+
+  $checkItems = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+  foreach ($checkItems as $checkItem) {
+    $checkItem->set('field_status', TriggerCheck::CHECKED_STATUS);
+    $checkItem->save();
+  }
 }

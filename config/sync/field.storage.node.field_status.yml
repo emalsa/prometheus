@@ -15,8 +15,14 @@ settings:
       value: checking
       label: Checking
     -
+      value: checked
+      label: Checked
+    -
       value: to_process
       label: 'To Process'
+    -
+      value: processed
+      label: Processed
     -
       value: final
       label: Final

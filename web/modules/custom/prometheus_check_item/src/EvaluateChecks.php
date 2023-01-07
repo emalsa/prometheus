@@ -60,6 +60,8 @@ class EvaluateChecks {
     }
 
     foreach ($checkItems as $this->checkItem) {
+      $this->checkItem->set('field_status', TriggerCheck::TO_PROCESS_STATUS);
+      $this->checkItem->save();
       $this->evaluateResult();
     }
   }
@@ -68,7 +70,7 @@ class EvaluateChecks {
     $query = \Drupal::entityQuery('node');
     $query->accessCheck(FALSE)
       ->condition('type', 'check_item')
-      ->condition('field_status', TriggerCheck::TO_PROCESS_STATUS)
+      ->condition('field_status', TriggerCheck::CHECKED_STATUS)
       ->sort('changed', 'ASC')
       ->range(0, 250);
 

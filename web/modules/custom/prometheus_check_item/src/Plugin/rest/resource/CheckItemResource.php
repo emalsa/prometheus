@@ -106,9 +106,9 @@ class CheckItemResource extends ResourceBase {
   public function post(Request $request) {
     try {
       $this->jsonData = json_decode($request->getContent(), TRUE);
-      if ($this->jsonData['success']) {
-        $this->onSuccess();
-      }
+      //      if ($this->jsonData['success']) {
+      $this->onSuccess();
+      //      }
       \Drupal::logger('check_item_resource')->notice($request->getContent());
       $result = ['ss' => 'test', 'wow' => ['nein', 'ujjjj']];
 
@@ -132,7 +132,7 @@ class CheckItemResource extends ResourceBase {
     }
 
     $node->set('field_full_response', json_encode($this->jsonData));
-    $node->set('field_status', TriggerCheck::TO_PROCESS_STATUS);
+    $node->set('field_status', TriggerCheck::CHECKED_STATUS);
     $node->save();
   }
 
