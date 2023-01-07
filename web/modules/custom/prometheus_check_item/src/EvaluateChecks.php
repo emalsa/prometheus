@@ -86,7 +86,7 @@ class EvaluateChecks {
 
     $nids = $query->execute();
     if (empty($nids)) {
-      // Log.
+      $this->logger->get('evaluate')->error('No Items no evaluate');
       return NULL;
     }
 
@@ -101,20 +101,21 @@ class EvaluateChecks {
   protected function evaluateResult() {
     $this->responseData = [];
     if ($this->checkItem->get('field_full_response')->isEmpty()) {
-      // Log.
+      $this->logger->get('evaluate')->error('Empty response');
       return;
     }
 
     $response = json_decode($this->checkItem->get('field_full_response')->value, TRUE);
     if (empty($response['response'])) {
-      // Log.
+      $this->logger->get('evaluate')->error('Could not json_decode response');
       return;
     }
 
     $responseData = base64_decode($response['response']);
     $responseData = preg_split("/\\r\\n|\\r|\\n/", $responseData);
     if (empty($responseData)) {
-      // Log!
+      $this->logger->get('evaluate')->error('Could not split response into array');
+
       return;
     }
 
