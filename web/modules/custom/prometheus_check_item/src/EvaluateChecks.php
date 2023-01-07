@@ -52,7 +52,11 @@ class EvaluateChecks {
     $this->logger = $logger;
   }
 
-
+  /**
+   * Evaluates the results.
+   *
+   * @return void
+   */
   public function evaluate() {
     $checkItems = $this->getCheckItemNodes();
     if (!$checkItems) {
@@ -66,13 +70,19 @@ class EvaluateChecks {
     }
   }
 
+  /**
+   * Gets the nodes to check
+   *
+   * @return \Drupal\Core\Entity\EntityInterface[]|null
+   *   The nodes array
+   */
   protected function getCheckItemNodes() {
     $query = \Drupal::entityQuery('node');
     $query->accessCheck(FALSE)
       ->condition('type', 'check_item')
       ->condition('field_status', TriggerCheck::CHECKED_STATUS)
       ->sort('changed', 'ASC')
-      ->range(0, 250);
+      ->range(0, 50);
 
     $nids = $query->execute();
     if (empty($nids)) {
@@ -83,6 +93,11 @@ class EvaluateChecks {
     return $this->entityTypeManager->getStorage('node')->loadMultiple($nids);
   }
 
+  /**
+   * Evaluates the results.
+   *
+   * @return void
+   */
   protected function evaluateResult() {
     $this->responseData = [];
     if ($this->checkItem->get('field_full_response')->isEmpty()) {
@@ -107,8 +122,12 @@ class EvaluateChecks {
     $this->setTimes();
   }
 
-
-  protected function setTimes() {
+  /**
+   * Sets the times.
+   *
+   * @return void
+   */
+  protected function setTimes(): void {
     $searchFields = [
       'field_time_appconnect' => 'time_appconnect',
       'field_time_connect' => 'time_connect',
@@ -119,7 +138,8 @@ class EvaluateChecks {
       'field_time_total' => 'time_total',
     ];
 
-    foreach ($this->responseData as $item) {
+    // Array reverse because the search text are below.
+    foreach (array_reverse($this->responseData) as $item) {
       foreach ($searchFields as $searchField => $searchString) {
         if (str_starts_with($item, "$searchString:")) {
           $val = str_replace("$searchString: ", '', $item);
@@ -127,8 +147,8 @@ class EvaluateChecks {
           $this->checkItem->set($searchField, $val);
         }
       }
-      $this->checkItem->save();
     }
+    $this->checkItem->save();
   }
 
 }
