@@ -117,3 +117,38 @@ function prometheus_check_item_update_10002(&$sandbox) {
     $checkItem->save();
   }
 }
+
+/**
+ * Change check item status for clean start
+ */
+function prometheus_check_item_update_10003(&$sandbox) {
+  $query = \Drupal::entityQuery('node');
+  $query
+    ->accessCheck(FALSE)
+    ->condition('type', 'check_item');
+  $nids = $query->execute();
+  if (empty($nids)) {
+    // Log.
+    return NULL;
+  }
+
+  $searchFields = [
+    'field_time_appconnect' => 'time_appconnect',
+    'field_time_connect' => 'time_connect',
+    'field_time_namelookup' => 'time_namelookup',
+    'field_time_pretransfer' => 'time_pretransfer',
+    'field_time_redirect' => 'time_redirect',
+    'field_time_starttransfer' => 'time_starttransfer',
+    'field_time_total' => 'time_total',
+  ];
+
+  $checkItems = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+  foreach ($checkItems as $checkItem) {
+    $checkItem->set('field_status', TriggerCheck::CHECKED_STATUS);
+    foreach ($searchFields as $fieldname => $search) {
+      $checkItem->set($fieldname, 0);
+
+    }
+    $checkItem->save();
+  }
+}

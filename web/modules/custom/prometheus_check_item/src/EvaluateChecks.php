@@ -82,7 +82,7 @@ class EvaluateChecks {
       ->condition('type', 'check_item')
       ->condition('field_status', TriggerCheck::CHECKED_STATUS)
       ->sort('changed', 'ASC')
-      ->range(0, 50);
+      ->range(0, 25);
 
     $nids = $query->execute();
     if (empty($nids)) {
