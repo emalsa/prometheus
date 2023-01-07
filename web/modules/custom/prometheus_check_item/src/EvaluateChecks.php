@@ -86,7 +86,7 @@ class EvaluateChecks {
 
     $nids = $query->execute();
     if (empty($nids)) {
-      $this->logger->get('evaluate')->error('No Items no evaluate');
+      $this->logger->get('evaluate')->notice('No Items to evaluate');
       return NULL;
     }
 
