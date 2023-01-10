@@ -1,0 +1,10 @@
+
+jwt_auth_login_issuer.jwt_auth_login_issuer:
+  path: '/admin/config/system/jwt_auth_login_issuer'
+  defaults:
+    _form: '\Drupal\jwt_auth_login_issuer\Form\ConfigForm'
+    _title: 'JWT REST Login Token Configuration'
+  requirements:
+    _permission: 'administer jwt'
+  options:
+    _admin_route: TRUE

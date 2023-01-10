@@ -1,0 +1,6 @@
+jwt_auth_login_issuer.jwt_auth_login_issuer:
+  title: 'JWT REST Login Token Configuration'
+  route_name: jwt_auth_login_issuer.jwt_auth_login_issuer
+  description: 'Configuration for JWT Auth Login module'
+  parent: system.admin_config_system
+  weight: 100

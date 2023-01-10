@@ -1,0 +1,7 @@
+jwt_auth_login_issuer.config:
+  type: config_object
+  label: 'JWT Auth Login settings'
+  mapping:
+      expiry:
+        type: integer
+        label: "Token expire time (in minutes)."

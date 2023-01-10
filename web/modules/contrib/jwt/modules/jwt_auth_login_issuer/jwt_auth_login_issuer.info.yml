@@ -1,0 +1,9 @@
+name: JWT Authentication Login Issuer
+type: module
+description: Includes a JWT on user login.
+core_version_requirement: ^8 || ^9
+package: Web services
+configure: jwt_auth_login_issuer.jwt_auth_login_issuer
+dependencies:
+  - jwt:jwt
+  - jwt_auth_issuer:jwt_auth_consumer

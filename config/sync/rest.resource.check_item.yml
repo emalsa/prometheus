@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - jwt
     - prometheus_check_item
     - serialization
     - user
@@ -11,9 +12,9 @@ plugin_id: check_item
 granularity: resource
 configuration:
   methods:
-    - GET
     - POST
   formats:
     - json
   authentication:
-    1: cookie
+    - jwt_auth
+    - cookie

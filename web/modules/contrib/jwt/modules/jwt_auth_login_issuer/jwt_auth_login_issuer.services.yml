@@ -1,0 +1,6 @@
+services:
+  jwt_auth_login_issuer.subscriber:
+    class: Drupal\jwt_auth_login_issuer\EventSubscriber\JwtAuthLoginIssuerSubscriber
+    arguments: ['@current_route_match', '@current_user', '@jwt.authentication.jwt', '@config.factory']
+    tags:
+      - { name: event_subscriber }

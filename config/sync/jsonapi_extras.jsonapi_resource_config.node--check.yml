@@ -28,7 +28,7 @@ resourceFields:
     enhancer:
       id: ''
   langcode:
-    disabled: true
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
@@ -123,6 +123,18 @@ resourceFields:
     publicName: path
     enhancer:
       id: ''
+  field_attempts_before_trigger:
+    disabled: false
+    fieldName: field_attempts_before_trigger
+    publicName: field_attempts_before_trigger
+    enhancer:
+      id: ''
+  field_check_interval:
+    disabled: false
+    fieldName: field_check_interval
+    publicName: field_check_interval
+    enhancer:
+      id: ''
   field_check_resource:
     disabled: false
     fieldName: field_check_resource
@@ -131,3 +143,21 @@ resourceFields:
       id: nested
       settings:
         path: value
+  field_check_status:
+    disabled: false
+    fieldName: field_check_status
+    publicName: field_check_status
+    enhancer:
+      id: ''
+  field_regions:
+    disabled: false
+    fieldName: field_regions
+    publicName: field_regions
+    enhancer:
+      id: ''
+  field_type:
+    disabled: false
+    fieldName: field_type
+    publicName: field_type
+    enhancer:
+      id: ''

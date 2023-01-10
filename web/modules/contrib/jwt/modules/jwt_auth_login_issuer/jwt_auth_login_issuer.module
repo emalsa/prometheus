@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Contains jwt_auth_login_issuer.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function jwt_auth_login_issuer_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the jwt_auth_login_issuer module.
+    case 'help.page.jwt_auth_login_issuer':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Includes a JWT on user login.') . '</p>';
+      return $output;
+  }
+}
