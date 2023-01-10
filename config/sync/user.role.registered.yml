@@ -8,7 +8,6 @@ dependencies:
   module:
     - node
     - rest
-    - simple_oauth
     - system
 id: registered
 label: Registered
@@ -18,7 +17,6 @@ permissions:
   - 'access content'
   - 'change own username'
   - 'create check content'
-  - 'debug simple_oauth tokens'
   - 'delete own check content'
   - 'edit own check content'
   - 'restful get check_item'
